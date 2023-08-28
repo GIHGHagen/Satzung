@@ -1,0 +1,23 @@
+---
+name: Latex Build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3   
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+      - run: |
+          cp main.pdf Satzung.pdf
+      - uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: Satzung.pdf

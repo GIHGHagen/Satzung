@@ -1,0 +1,21 @@
+# This file is a template, and might need editing before it works on your project.
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/LaTeX.gitlab-ci.yml
+
+---
+variables:
+  LATEX_IMAGE: registry.gitlab.com/islandoftex/images/texlive:latest
+
+build:
+  image: $LATEX_IMAGE
+  script:
+    - latexmk -pdf -interaction=nonstopmode main.tex
+    - mv main.pdf Satzung.pdf
+
+  artifacts:
+    paths:
+      - "Satzung.pdf"
+  tags:
+    - shared
