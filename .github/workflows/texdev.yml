@@ -19,5 +19,5 @@ jobs:
           cp main.pdf Satzung.pdf
       - uses: actions/upload-artifact@v3
         with:
-          name: PDF
+          name: Satzung
           path: Satzung.pdf
